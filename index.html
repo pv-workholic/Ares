@@ -3,142 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ARES 3D Lab</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-background:#050505;
 overflow:hidden;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
+background:#000;
+font-family:Arial,Helvetica,sans-serif;
 }
 
-/* Animated background */
-body::before{
-content:"";
+/* 3D Canvas */
+canvas{
+display:block;
+}
+
+/* Overlay UI */
+#ui{
 position:absolute;
-width:200%;
-height:200%;
-background:
-radial-gradient(circle,#1a1a1a 0%,#050505 60%);
-animation:rotateBg 20s linear infinite;
-z-index:-2;
-}
-
-@keyframes rotateBg{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
-}
-
-/* Main Box */
-.container{
-text-align:center;
-width:90%;
-max-width:900px;
-}
-
-/* Title */
-h1{
-font-size:60px;
-letter-spacing:8px;
-color:#d4af37;
-text-shadow:
-0 0 10px #d4af37,
-0 0 20px #d4af37;
-margin-bottom:15px;
-}
-
-/* Subtitle */
-p{
-font-size:18px;
-color:#cfcfcf;
-margin-bottom:45px;
-}
-
-/* Future Character Area */
-.character-area{
-width:320px;
-height:320px;
-margin:auto;
-border:2px dashed rgba(212,175,55,.4);
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-color:#888;
-font-size:15px;
-backdrop-filter:blur(6px);
-}
-
-/* Loading Bar */
-.loading{
-width:320px;
-height:8px;
-background:#222;
-margin:50px auto 15px;
-border-radius:30px;
-overflow:hidden;
-}
-
-.bar{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#d4af37,#fff3c4,#d4af37);
-animation:load 4s forwards;
-}
-
-@keyframes load{
-to{
+top:40px;
 width:100%;
-}
+text-align:center;
+pointer-events:none;
 }
 
-.status{
-font-size:15px;
-color:#999;
+h1{
+font-size:55px;
+letter-spacing:8px;
+color:#D4AF37;
+text-shadow:0 0 20px gold;
+}
+
+p{
+margin-top:10px;
+color:white;
+font-size:18px;
 letter-spacing:2px;
 }
-</style>
 
+</style>
 </head>
 
 <body>
 
-<div class="container">
-
+<div id="ui">
 <h1>ARES</h1>
-
-<p>Building the Future of AI 3D Assistants</p>
-
-<div class="character-area">
-3D Character Loading...
+<p>3D Laboratory • Part 2</p>
 </div>
 
-<div class="loading">
-<div class="bar"></div>
-</div>
+<script type="module">
 
-<div class="status" id="status">
-Initializing...
-</div>
+import * as THREE from "https://unpkg.com/three@0.166.1/build/three.module.js";
+import { OrbitControls } from "https://unpkg.com/three@0.166.1/examples/jsm/controls/OrbitControls.js";
 
-</div>
+// Scene
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x050505);
 
-<script>
+// Camera
+const camera = new THREE.PerspectiveCamera(
+60,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+);
 
-setTimeout(()=>{
-document.getElementById("status").innerHTML="3D Scene Ready";
-},4000);
+camera.position.set(0,2,6);
+
+// Renderer
+const renderer = new THREE.WebGLRenderer({
+antialias:true
+});
+
+renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.shadowMap.enabled=true;
+
+document.body.appendChild(renderer.domElement);
+
+// Orbit Controls
+const controls = new OrbitControls(camera,renderer.domElement);
+
+controls.enableDamping=true;
+controls.enablePan=false;
+controls.maxDistance=10;
+controls.minDistance=3;
+
+// Floor
+const floor=new THREE.Mesh(
+new THREE.CircleGeometry(8,64),
+new THREE.MeshStandardMaterial({
+color:0x111111
+})
+);
+
+floor.rotation.x=-Math.PI/2;
+floor.receiveShadow=true;
+scene.add(floor);
+
+// Ambient Light
+scene.add(new THREE.AmbientLight(0xffffff,1.2));
+
+// Gold Spotlight
+const light=new THREE.SpotLight(0xffd700,80);
+
+light.position.set(4,8,4);
+
+light.castShadow=true;
+
+scene.add(light);
+
+// Placeholder Character
+const character=new THREE.Mesh(
+
+new THREE.CapsuleGeometry(0.5,1.5,8,16),
+
+new THREE.MeshStandardMaterial({
+color:0xD4AF37,
+metalness:1,
+roughness:0.25
+})
+
+);
+
+character.castShadow=true;
+character.position.y=1.2;
+
+scene.add(character);
+
+// Animation Loop
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+character.rotation.y+=0.005;
+
+controls.update();
+
+renderer.render(scene,camera);
+
+}
+
+animate();
+
+// Resize
+
+window.addEventListener("resize",()=>{
+
+camera.aspect=window.innerWidth/window.innerHeight;
+
+camera.updateProjectionMatrix();
+
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+});
 
 </script>
 
