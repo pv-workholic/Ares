@@ -75,7 +75,66 @@ DESIGN LANGUAGE
     <!-- Icons -->
 
     <!-- Theme Color -->
+<!-- ==========================================================
+                        META TAGS
+=========================================================== -->
 
+<meta charset="UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#0A0A0A">
+
+<meta name="description"
+content="ARES is a premium AI Entertainment Assistant helping you discover movies, TV shows and recommendations.">
+
+<meta name="keywords"
+content="AI, Movies, TV Shows, Entertainment, Chatbot, ARES">
+
+<meta name="author"
+content="Pranjal Vats">
+
+<!-- ==========================================================
+                            TITLE
+=========================================================== -->
+
+<title>ARES | AI Entertainment Assistant</title>
+
+<!-- ==========================================================
+                            FAVICON
+=========================================================== -->
+
+<!-- Add later -->
+<!-- <link rel="icon" href="favicon.png"> -->
+
+<!-- ==========================================================
+                        GOOGLE FONTS
+=========================================================== -->
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<!-- ==========================================================
+                        ICON LIBRARY
+=========================================================== -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- ==========================================================
+                        CSS STARTS BELOW
+=========================================================== -->
 
 
     <style>
@@ -90,12 +149,105 @@ DESIGN LANGUAGE
                             RESET
     ==========================================================*/
 
+/*==========================================================
+                        RESET
+==========================================================*/
 
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input,
+textarea{
+    font:inherit;
+    border:none;
+    outline:none;
+}
+
+button{
+    cursor:pointer;
+    background:none;
+}
+
+ul{
+    list-style:none;
+}
 
     /*==========================================================
                             ROOT VARIABLES
     ==========================================================*/
+/*==========================================================
+                    ROOT VARIABLES
+==========================================================*/
 
+:root{
+
+    /*========== COLORS ==========*/
+
+    --bg:#0A0A0A;
+    --surface:#171717;
+    --card:#1F1F1F;
+
+    --text:#F5F5F5;
+    --text-light:#B8B8B8;
+
+    --gold:#D4AF37;
+    --gold-hover:#E8C55C;
+
+    --border:rgba(255,255,255,.08);
+
+    /*========== FONTS ==========*/
+
+    --logo-font:'Cinzel',serif;
+    --body-font:'Poppins',sans-serif;
+
+    /*========== FONT SIZE ==========*/
+
+    --h1:4rem;
+    --h2:2.5rem;
+    --h3:1.5rem;
+
+    --body:1rem;
+    --small:.9rem;
+
+    /*========== RADIUS ==========*/
+
+    --radius-sm:10px;
+    --radius-md:18px;
+    --radius-lg:28px;
+
+    /*========== SPACING ==========*/
+
+    --section-gap:120px;
+    --container:1280px;
+
+    /*========== TRANSITIONS ==========*/
+
+    --transition:.25s ease;
+}
 
 
     /*==========================================================
@@ -108,13 +260,79 @@ DESIGN LANGUAGE
                             BODY
     ==========================================================*/
 
+/*==========================================================
+                            BODY
+==========================================================*/
 
+body{
+
+    font-family:var(--body-font);
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    line-height:1.6;
+
+    overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
+
+}
 
     /*==========================================================
                             TYPOGRAPHY
     ==========================================================*/
 
+/*==========================================================
+                        TYPOGRAPHY
+==========================================================*/
 
+h1,h2,h3,h4,h5,h6{
+
+    font-weight:600;
+
+    line-height:1.2;
+
+}
+
+h1{
+
+    font-size:var(--h1);
+
+}
+
+h2{
+
+    font-size:var(--h2);
+
+}
+
+h3{
+
+    font-size:var(--h3);
+
+}
+
+p{
+
+    font-size:var(--body);
+
+    color:var(--text-light);
+
+}
+
+.logo{
+
+    font-family:var(--logo-font);
+
+    color:var(--gold);
+
+    letter-spacing:4px;
+
+}
 
     /*==========================================================
                             BUTTONS
@@ -167,7 +385,29 @@ DESIGN LANGUAGE
     /*==========================================================
                             UTILITIES
     ==========================================================*/
+/*==========================================================
+                        UTILITIES
+==========================================================*/
 
+.container{
+
+    width:min(90%, var(--container));
+
+    margin-inline:auto;
+
+}
+
+.section{
+
+    padding:100px 0;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
 
 
     /*==========================================================
@@ -185,14 +425,102 @@ DESIGN LANGUAGE
 <!--==========================================================
                         HTML
 ===========================================================-->
+<header>
+
+    <nav>
+
+        <a href="#" class="logo">
+
+            ARES
+
+        </a>
+
+        <div class="nav-links">
+
+            <a href="#">Home</a>
+
+            <a href="#trending">Trending</a>
+
+            <a href="#recommendations">Recommendations</a>
+
+            <a href="#chat">Chat</a>
+
+        </div>
+
+    </nav>
+
+</header>
 
 
-
-<!--==========================================================
+/*==========================================================
                         NAVIGATION
-===========================================================-->
+==========================================================*/
 
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:rgba(10,10,10,.95);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    z-index:1000;
+}
 
+nav{
+    max-width:1280px;
+    width:90%;
+    height:80px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-family:var(--logo-font);
+    font-size:2rem;
+    font-weight:700;
+    color:var(--gold);
+    text-decoration:none;
+    letter-spacing:4px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:var(--text);
+    font-size:1rem;
+    font-weight:500;
+    transition:color .25s ease;
+    position:relative;
+}
+
+.nav-links a:hover{
+    color:var(--gold);
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0%;
+    height:2px;
+    background:var(--gold);
+    transition:.25s ease;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
 
 <!--==========================================================
                         HERO
