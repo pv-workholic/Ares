@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARES 3D Lab</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#050505;
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+/* Animated background */
+body::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle,#1a1a1a 0%,#050505 60%);
+animation:rotateBg 20s linear infinite;
+z-index:-2;
+}
+
+@keyframes rotateBg{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+/* Main Box */
+.container{
+text-align:center;
+width:90%;
+max-width:900px;
+}
+
+/* Title */
+h1{
+font-size:60px;
+letter-spacing:8px;
+color:#d4af37;
+text-shadow:
+0 0 10px #d4af37,
+0 0 20px #d4af37;
+margin-bottom:15px;
+}
+
+/* Subtitle */
+p{
+font-size:18px;
+color:#cfcfcf;
+margin-bottom:45px;
+}
+
+/* Future Character Area */
+.character-area{
+width:320px;
+height:320px;
+margin:auto;
+border:2px dashed rgba(212,175,55,.4);
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+color:#888;
+font-size:15px;
+backdrop-filter:blur(6px);
+}
+
+/* Loading Bar */
+.loading{
+width:320px;
+height:8px;
+background:#222;
+margin:50px auto 15px;
+border-radius:30px;
+overflow:hidden;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#d4af37,#fff3c4,#d4af37);
+animation:load 4s forwards;
+}
+
+@keyframes load{
+to{
+width:100%;
+}
+}
+
+.status{
+font-size:15px;
+color:#999;
+letter-spacing:2px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ARES</h1>
+
+<p>Building the Future of AI 3D Assistants</p>
+
+<div class="character-area">
+3D Character Loading...
+</div>
+
+<div class="loading">
+<div class="bar"></div>
+</div>
+
+<div class="status" id="status">
+Initializing...
+</div>
+
+</div>
+
+<script>
+
+setTimeout(()=>{
+document.getElementById("status").innerHTML="3D Scene Ready";
+},4000);
+
+</script>
+
+</body>
+</html>
