@@ -373,7 +373,17 @@ Premium AI Virtual Human
 
 </section>
 
+<!-- ===========================
+PART 3 START
+GLTF Loader
+=========================== -->
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.165.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<!-- ===========================
+PART 3 END
+=========================== -->
+  
   <!-- ===========================
 CHAT
 =========================== -->
@@ -531,29 +541,72 @@ floor.receiveShadow=true;
 
 scene.add(floor);
 
-// Placeholder Character
-const character = new THREE.Mesh(
 
-new THREE.CapsuleGeometry(0.35,1.2,8,16),
+/* ==================================================
+PART 3 START
+Load GLB Character
+================================================== */
 
-new THREE.MeshStandardMaterial({
+let character = null;
+let mixer = null;
+let animations = [];
 
-color:0x8aa8ff,
+const loader = new THREE.GLTFLoader();
 
-metalness:0.25,
+loader.load(
 
-roughness:0.45
+"character.glb",
 
-})
+(gltf)=>{
 
-);
+character = gltf.scene;
 
-character.position.y=1;
+character.position.set(0,0,0);
 
-character.castShadow=true;
+character.scale.set(1.2,1.2,1.2);
+
+character.traverse((obj)=>{
+
+if(obj.isMesh){
+
+obj.castShadow=true;
+obj.receiveShadow=true;
+
+}
+
+});
 
 scene.add(character);
 
+// Animation Mixer
+mixer = new THREE.AnimationMixer(character);
+
+animations = gltf.animations;
+
+console.log("Animations:", animations);
+
+},
+
+(xhr)=>{
+
+console.log(
+Math.round(xhr.loaded/xhr.total*100)+"%"
+);
+
+},
+
+(error)=>{
+
+console.error(error);
+
+}
+
+);
+
+/* ==================================================
+PART 3 END
+================================================== */
+  
 // Resize
 window.addEventListener("resize",()=>{
 
@@ -580,13 +633,23 @@ function animate(){
 
 requestAnimationFrame(animate);
 
+const delta = 0.016;
+
 controls.update();
 
-// Idle movement
-character.rotation.y+=0.002;
+if(mixer){
+
+mixer.update(delta);
+
+}
+
+if(character){
+
+character.rotation.y += 0.002;
+
+}
 
 renderer.render(scene,camera);
-
 }
 
 animate();
