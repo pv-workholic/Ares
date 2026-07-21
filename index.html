@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>ARES 3D Lab</title>
+<title>ARES AI</title>
+
+<!-- ===========================
+PART 1 START
+HTML + CSS FOUNDATION
+=========================== -->
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -12,141 +19,571 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
 
 body{
+
+background:
+radial-gradient(circle at top,#20283f,#090b14 65%);
+
+height:100vh;
 overflow:hidden;
-background:#000;
-font-family:Arial,Helvetica,sans-serif;
-}
-
-/* 3D Canvas */
-canvas{
-display:block;
-}
-
-/* Overlay UI */
-#ui{
-position:absolute;
-top:40px;
-width:100%;
-text-align:center;
-pointer-events:none;
-}
-
-h1{
-font-size:55px;
-letter-spacing:8px;
-color:#D4AF37;
-text-shadow:0 0 20px gold;
-}
-
-p{
-margin-top:10px;
 color:white;
-font-size:18px;
-letter-spacing:2px;
+
+}
+
+/* Animated background */
+
+body::before{
+
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:
+
+radial-gradient(circle,#6e9cff33 0%,transparent 50%),
+radial-gradient(circle,#a855f733 0%,transparent 50%);
+
+filter:blur(100px);
+animation:bgMove 12s infinite alternate;
+z-index:-2;
+
+}
+
+@keyframes bgMove{
+
+0%{transform:translate(-10%,0);}
+100%{transform:translate(10%,5%);}
+
+}
+
+.app{
+
+display:flex;
+flex-direction:column;
+height:100%;
+
+}
+
+/* HEADER */
+
+header{
+
+height:72px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 30px;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(25px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.logo{
+
+font-size:24px;
+font-weight:700;
+letter-spacing:3px;
+
+}
+
+.status{
+
+display:flex;
+align-items:center;
+gap:10px;
+
+font-size:14px;
+
+}
+
+.dot{
+
+width:10px;
+height:10px;
+border-radius:50%;
+background:#00ff95;
+
+box-shadow:0 0 15px #00ff95;
+
+}
+
+/* MAIN */
+
+main{
+
+flex:1;
+
+display:grid;
+
+grid-template-columns:60% 40%;
+
+overflow:hidden;
+
+}
+
+/* CHARACTER PANEL */
+
+#viewer{
+
+position:relative;
+
+background:
+linear-gradient(180deg,#101521,#06070b);
+
+overflow:hidden;
+
+}
+
+#three-container{
+
+width:100%;
+height:100%;
+
+}
+
+/* CHAT */
+
+.chat{
+
+display:flex;
+flex-direction:column;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(30px);
+
+border-left:1px solid rgba(255,255,255,.08);
+
+}
+
+/* messages */
+
+.messages{
+
+flex:1;
+
+padding:25px;
+
+overflow:auto;
+
+}
+
+.message{
+
+margin-bottom:18px;
+
+padding:16px;
+
+border-radius:18px;
+
+line-height:1.6;
+
+}
+
+.ai{
+
+background:rgba(255,255,255,.08);
+
+}
+
+.user{
+
+background:#3b82f6;
+
+margin-left:40px;
+
+}
+
+/* INPUT */
+
+.input-area{
+
+padding:20px;
+
+display:flex;
+
+gap:10px;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+input{
+
+flex:1;
+
+padding:15px;
+
+border:none;
+
+outline:none;
+
+background:rgba(255,255,255,.08);
+
+border-radius:16px;
+
+color:white;
+
+}
+
+button{
+
+border:none;
+
+padding:15px 18px;
+
+border-radius:15px;
+
+cursor:pointer;
+
+background:#4f8cff;
+
+color:white;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-2px);
+
+}
+
+/* Floating cards */
+
+.panel{
+
+position:absolute;
+
+top:20px;
+
+left:20px;
+
+padding:16px;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(20px);
+
+border-radius:18px;
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.panel h3{
+
+margin-bottom:8px;
+
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+main{
+
+grid-template-columns:1fr;
+
+grid-template-rows:50% 50%;
+
+}
+
+.chat{
+
+border-left:none;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+header{
+
+padding:15px;
+
+}
+
+.logo{
+
+font-size:20px;
+
+}
+
 }
 
 </style>
+
+<!-- ===========================
+PART 1 END
+=========================== -->
+
 </head>
 
 <body>
 
-<div id="ui">
-<h1>ARES</h1>
-<p>3D Laboratory • Part 2</p>
+<div class="app">
+
+<header>
+
+<div class="logo">
+ARES
 </div>
 
-<script type="module">
+<div class="status">
 
-import * as THREE from "https://unpkg.com/three@0.166.1/build/three.module.js";
-import { OrbitControls } from "https://unpkg.com/three@0.166.1/examples/jsm/controls/OrbitControls.js";
+<div class="dot"></div>
+
+<span>AI Online</span>
+
+</div>
+
+</header>
+
+<main>
+
+<!-- ===========================
+3D CHARACTER
+=========================== -->
+
+<section id="viewer">
+
+<div id="three-container">
+<!-- Three.js Scene will appear here in Part 2 -->
+</div>
+
+<div class="panel">
+
+<h3>ARES</h3>
+
+<p>
+Premium AI Virtual Human
+</p>
+
+</div>
+
+</section>
+
+
+  <!-- ===========================
+CHAT
+=========================== -->
+
+<section class="chat">
+
+<div class="messages" id="messages">
+
+<div class="message ai">
+
+Hello! I'm ARES.
+
+My realistic 3D body will load in the next part.
+
+</div>
+
+</div>
+
+<div class="input-area">
+
+<input
+id="messageInput"
+type="text"
+placeholder="Ask ARES anything..."
+>
+
+<button id="sendButton">
+
+Send
+
+</button>
+
+<button id="voiceButton">
+
+🎤
+
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<script>
+/* ==================================================
+PART 2 START
+Three.js Scene
+================================================== */
+
+const container = document.getElementById("three-container");
 
 // Scene
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x050505);
+scene.background = new THREE.Color(0x0a0d16);
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
-60,
-window.innerWidth/window.innerHeight,
+45,
+container.clientWidth / container.clientHeight,
 0.1,
-1000
+100
 );
 
-camera.position.set(0,2,6);
+camera.position.set(0, 1.6, 3);
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
-antialias:true
+antialias: true,
+alpha: true
 });
 
-renderer.setSize(window.innerWidth,window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.shadowMap.enabled=true;
+renderer.setSize(
+container.clientWidth,
+container.clientHeight
+);
 
-document.body.appendChild(renderer.domElement);
+renderer.setPixelRatio(
+Math.min(window.devicePixelRatio, 2)
+);
+
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+container.appendChild(renderer.domElement);
 
 // Orbit Controls
-const controls = new OrbitControls(camera,renderer.domElement);
+const controls = new THREE.OrbitControls(
+camera,
+renderer.domElement
+);
 
-controls.enableDamping=true;
-controls.enablePan=false;
-controls.maxDistance=10;
-controls.minDistance=3;
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+
+controls.minDistance = 1.5;
+controls.maxDistance = 6;
+
+controls.target.set(0, 1.4, 0);
+
+// Ambient Light
+const ambient = new THREE.AmbientLight(
+0xffffff,
+1.2
+);
+
+scene.add(ambient);
+
+// Directional Light
+const sun = new THREE.DirectionalLight(
+0xffffff,
+3
+);
+
+sun.position.set(5, 8, 4);
+
+sun.castShadow = true;
+
+scene.add(sun);
+
+// Rim Light
+const rim = new THREE.DirectionalLight(
+0x66aaff,
+2
+);
+
+rim.position.set(-4, 3, -3);
+
+scene.add(rim);
 
 // Floor
-const floor=new THREE.Mesh(
-new THREE.CircleGeometry(8,64),
+const floor = new THREE.Mesh(
+
+new THREE.CircleGeometry(20,64),
+
 new THREE.MeshStandardMaterial({
-color:0x111111
+
+color:0x101318,
+
+roughness:0.8,
+
+metalness:0.1
+
 })
+
 );
 
 floor.rotation.x=-Math.PI/2;
+
 floor.receiveShadow=true;
+
 scene.add(floor);
 
-// Ambient Light
-scene.add(new THREE.AmbientLight(0xffffff,1.2));
-
-// Gold Spotlight
-const light=new THREE.SpotLight(0xffd700,80);
-
-light.position.set(4,8,4);
-
-light.castShadow=true;
-
-scene.add(light);
-
 // Placeholder Character
-const character=new THREE.Mesh(
+const character = new THREE.Mesh(
 
-new THREE.CapsuleGeometry(0.5,1.5,8,16),
+new THREE.CapsuleGeometry(0.35,1.2,8,16),
 
 new THREE.MeshStandardMaterial({
-color:0xD4AF37,
-metalness:1,
-roughness:0.25
+
+color:0x8aa8ff,
+
+metalness:0.25,
+
+roughness:0.45
+
 })
 
 );
 
+character.position.y=1;
+
 character.castShadow=true;
-character.position.y=1.2;
 
 scene.add(character);
 
-// Animation Loop
+// Resize
+window.addEventListener("resize",()=>{
 
+camera.aspect=
+
+container.clientWidth/
+
+container.clientHeight;
+
+camera.updateProjectionMatrix();
+
+renderer.setSize(
+
+container.clientWidth,
+
+container.clientHeight
+
+);
+
+});
+
+// Animation Loop
 function animate(){
 
 requestAnimationFrame(animate);
 
-character.rotation.y+=0.005;
-
 controls.update();
+
+// Idle movement
+character.rotation.y+=0.002;
 
 renderer.render(scene,camera);
 
@@ -154,18 +591,64 @@ renderer.render(scene,camera);
 
 animate();
 
-// Resize
+/* ==================================================
+PART 2 END
+================================================== */
+  
+/* ===========================
+PART 1
+Temporary placeholders
+=========================== */
 
-window.addEventListener("resize",()=>{
+const sendButton=document.getElementById("sendButton");
 
-camera.aspect=window.innerWidth/window.innerHeight;
+const input=document.getElementById("messageInput");
 
-camera.updateProjectionMatrix();
+const messages=document.getElementById("messages");
 
-renderer.setSize(window.innerWidth,window.innerHeight);
+sendButton.onclick=()=>{
 
-});
+const text=input.value.trim();
 
+if(!text)return;
+
+messages.innerHTML+=`
+
+<div class="message user">
+
+${text}
+
+</div>
+
+`;
+
+messages.innerHTML+=`
+
+<div class="message ai">
+
+AI functionality will be connected in later parts.
+
+</div>
+
+`;
+
+messages.scrollTop=messages.scrollHeight;
+
+input.value="";
+
+};
+<!-- ===========================
+PART 2 START
+Three.js Libraries
+=========================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.165.0/examples/js/controls/OrbitControls.js"></script>
+
+<!-- ===========================
+PART 2 END
+=========================== -->
 </script>
 
 </body>
