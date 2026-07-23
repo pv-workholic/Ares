@@ -2,474 +2,1521 @@
 <html lang="en">
 
 <!-- ==========================================================
-                        ARES DESIGN SYSTEM
-=========================================================== -->
-
-<!--
-===============================================================
-PROJECT
-===============================================================
-
-Name            : ARES
-Version         : 1.0
-Developer       : Pranjal Vats
-Type            : AI Entertainment Assistant
-
-===============================================================
-THEME
-===============================================================
-
-Luxury
-Minimal
-Cinematic
-Premium
-Modern
-
-===============================================================
-TYPOGRAPHY
-===============================================================
-
-Logo            : Cinzel
-Headings        : Poppins SemiBold
-Body            : Poppins Regular
-
-===============================================================
-COLOUR PALETTE
-===============================================================
-
-Background       : #0A0A0A
-Surface          : #171717
-Cards            : #1F1F1F
-
-Primary Text     : #F5F5F5
-Secondary Text   : #B8B8B8
-
-Accent Gold      : #D4AF37
-Hover Gold       : #E8C55C
-
-Borders          : rgba(255,255,255,.08)
-
-===============================================================
-DESIGN LANGUAGE
-===============================================================
-
-✓ Clean
-✓ Professional
-✓ Premium
-✓ Responsive
-✓ Mobile First
-
-===============================================================
--->
+                         ARES META BEING
+========================================================== -->
 
 <head>
 
-    <!-- Meta Tags -->
+    <!-- ======================================================
+                           META
+    ======================================================= -->
 
-    <!-- Title -->
+    <meta charset="UTF-8">
 
-    <!-- Favicon -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts -->
+    <meta
+        name="description"
+        content="ARES — The Future Speaks. A premium MetaBeing built to think, create and evolve.">
 
-    <!-- Icons -->
+    <meta
+        name="keywords"
+        content="ARES, AI, MetaBeing, Artificial Intelligence, Assistant">
 
-    <!-- Theme Color -->
-<!-- ==========================================================
-                        META TAGS
-=========================================================== -->
+    <meta
+        name="author"
+        content="Pranjal Vats">
 
-<meta charset="UTF-8">
+    <meta
+        name="theme-color"
+        content="#05070E">
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        ARES • The Future Speaks.
+    </title>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <!-- ======================================================
+                         GOOGLE FONTS
+    ======================================================= -->
 
-<meta name="theme-color"
-content="#0A0A0A">
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
 
-<meta name="description"
-content="ARES is a premium AI Entertainment Assistant helping you discover movies, TV shows and recommendations.">
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
-<meta name="keywords"
-content="AI, Movies, TV Shows, Entertainment, Chatbot, ARES">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-<meta name="author"
-content="Pranjal Vats">
+    <!-- ======================================================
+                        ICONS
+    ======================================================= -->
 
-<!-- ==========================================================
-                            TITLE
-=========================================================== -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-<title>ARES | AI Entertainment Assistant</title>
+    <!-- ======================================================
+                         GSAP
+    ======================================================= -->
 
-<!-- ==========================================================
-                            FAVICON
-=========================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
 
-<!-- Add later -->
-<!-- <link rel="icon" href="favicon.png"> -->
+    <!-- ======================================================
+                         THREE JS
+    ======================================================= -->
 
-<!-- ==========================================================
-                        GOOGLE FONTS
-=========================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+    <!-- ======================================================
+                     GLTF LOADER
+    ======================================================= -->
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
+    <!-- ======================================================
+                    ORBIT CONTROLS
+    ======================================================= -->
 
-<!-- ==========================================================
-                        ICON LIBRARY
-=========================================================== -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<!-- ==========================================================
-                        CSS STARTS BELOW
-=========================================================== -->
-
+    <!-- ======================================================
+                  CSS STARTS HERE
+                  (Part 1.2)
+    ======================================================= -->
 
     <style>
+/* ==========================================================
+                    ARES DESIGN SYSTEM
+========================================================== */
 
-    /*==========================================================
-                            CSS
-    ==========================================================*/
+:root{
 
+    /* Colors */
 
+    --background:#05070E;
+    --surface:#0B1020;
+    --surface-2:#111827;
 
-    /*==========================================================
-                            RESET
-    ==========================================================*/
+    --primary:#5EEBFF;
+    --secondary:#2B7FFF;
+    --accent:#8A6DFF;
 
-/*==========================================================
-                        RESET
-==========================================================*/
+    --text:#FFFFFF;
+    --text-secondary:#B8C3D6;
 
-*,
-*::before,
-*::after{
+    --border:rgba(255,255,255,.08);
+
+    --glass:rgba(255,255,255,.05);
+
+    --glass-border:rgba(255,255,255,.10);
+
+    --shadow:0 15px 45px rgba(0,0,0,.35);
+
+    --radius:22px;
+
+    --transition:.35s ease;
+
+}
+
+/* ==========================================================
+                    RESET
+========================================================== */
+
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
 body{
-    min-height:100vh;
-}
 
-img{
-    display:block;
-    max-width:100%;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-button,
-input,
-textarea{
-    font:inherit;
-    border:none;
-    outline:none;
-}
-
-button{
-    cursor:pointer;
-    background:none;
-}
-
-ul{
-    list-style:none;
-}
-
-    /*==========================================================
-                            ROOT VARIABLES
-    ==========================================================*/
-/*==========================================================
-                    ROOT VARIABLES
-==========================================================*/
-
-:root{
-
-    /*========== COLORS ==========*/
-
-    --bg:#0A0A0A;
-    --surface:#171717;
-    --card:#1F1F1F;
-
-    --text:#F5F5F5;
-    --text-light:#B8B8B8;
-
-    --gold:#D4AF37;
-    --gold-hover:#E8C55C;
-
-    --border:rgba(255,255,255,.08);
-
-    /*========== FONTS ==========*/
-
-    --logo-font:'Cinzel',serif;
-    --body-font:'Poppins',sans-serif;
-
-    /*========== FONT SIZE ==========*/
-
-    --h1:4rem;
-    --h2:2.5rem;
-    --h3:1.5rem;
-
-    --body:1rem;
-    --small:.9rem;
-
-    /*========== RADIUS ==========*/
-
-    --radius-sm:10px;
-    --radius-md:18px;
-    --radius-lg:28px;
-
-    /*========== SPACING ==========*/
-
-    --section-gap:120px;
-    --container:1280px;
-
-    /*========== TRANSITIONS ==========*/
-
-    --transition:.25s ease;
-}
-
-
-    /*==========================================================
-                            SCROLLBAR
-    ==========================================================*/
-
-
-
-    /*==========================================================
-                            BODY
-    ==========================================================*/
-
-/*==========================================================
-                            BODY
-==========================================================*/
-
-body{
-
-    font-family:var(--body-font);
-
-    background:var(--bg);
+    background:var(--background);
 
     color:var(--text);
 
-    line-height:1.6;
+    font-family:"Inter",sans-serif;
 
     overflow-x:hidden;
 
-    -webkit-font-smoothing:antialiased;
-
-    text-rendering:optimizeLegibility;
+    min-height:100vh;
 
 }
 
-    /*==========================================================
-                            TYPOGRAPHY
-    ==========================================================*/
+/* ==========================================================
+                  TYPOGRAPHY
+========================================================== */
 
-/*==========================================================
-                        TYPOGRAPHY
-==========================================================*/
+h1,h2,h3{
 
-h1,h2,h3,h4,h5,h6{
-
-    font-weight:600;
-
-    line-height:1.2;
+    font-family:"Space Grotesk",sans-serif;
 
 }
 
-h1{
+.logo{
 
-    font-size:var(--h1);
+    font-family:"Cinzel",serif;
 
-}
+    font-size:2rem;
 
-h2{
+    letter-spacing:3px;
 
-    font-size:var(--h2);
-
-}
-
-h3{
-
-    font-size:var(--h3);
+    color:var(--primary);
 
 }
 
 p{
 
-    font-size:var(--body);
+    color:var(--text-secondary);
 
-    color:var(--text-light);
-
-}
-
-.logo{
-
-    font-family:var(--logo-font);
-
-    color:var(--gold);
-
-    letter-spacing:4px;
+    line-height:1.8;
 
 }
 
-    /*==========================================================
-                            BUTTONS
-    ==========================================================*/
+/* ==========================================================
+                     LINKS
+========================================================== */
 
+a{
 
+    color:inherit;
 
-    /*==========================================================
-                            NAVIGATION
-    ==========================================================*/
-/*==========================================================
-                        NAVIGATION
-==========================================================*/
+    text-decoration:none;
 
-header{
+}
+
+/* ==========================================================
+                     BUTTONS
+========================================================== */
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    outline:none;
+
+    font-family:inherit;
+
+}
+
+/* ==========================================================
+                     LISTS
+========================================================== */
+
+ul{
+
+    list-style:none;
+
+}
+
+/* ==========================================================
+                 IMAGES
+========================================================== */
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+/* ==========================================================
+                 BACKGROUND
+========================================================== */
+
+#background{
+
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:rgba(10,10,10,.95);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    border-bottom:1px solid var(--border);
-    z-index:1000;
+
+    inset:0;
+
+    z-index:-100;
+
+    overflow:hidden;
+
 }
 
-nav{
-    max-width:1280px;
-    width:90%;
-    height:80px;
-    margin:auto;
+#particles-layer,
+#aurora-layer,
+#grid-layer{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+/* ==========================================================
+                 LOADING SCREEN
+========================================================== */
+
+#loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:var(--background);
 
     display:flex;
-    justify-content:space-between;
+
+    flex-direction:column;
+
+    justify-content:center;
+
     align-items:center;
+
+    gap:30px;
+
+    z-index:99999;
+
 }
 
-.logo{
-    font-family:var(--logo-font);
-    font-size:2rem;
-    font-weight:700;
-    color:var(--gold);
-    text-decoration:none;
-    letter-spacing:4px;
+.loading-logo h1{
+
+    font-size:5rem;
+
+    letter-spacing:12px;
+
+    color:var(--primary);
+
+}
+
+.loading-logo p{
+
+    text-align:center;
+
+    letter-spacing:6px;
+
+}
+
+.loading-bar{
+
+    width:260px;
+
+    height:5px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.loading-progress{
+
+    width:15%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+}
+
+/* ==========================================================
+                    NAVBAR
+========================================================== */
+
+#navbar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:80px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 8%;
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(5,7,14,.55);
+
+    border-bottom:1px solid var(--border);
+
+    z-index:999;
+
 }
 
 .nav-links{
+
     display:flex;
-    align-items:center;
+
     gap:40px;
+
 }
 
 .nav-links a{
-    text-decoration:none;
-    color:var(--text);
-    font-size:1rem;
-    font-weight:500;
-    transition:color .25s ease;
-    position:relative;
+
+    transition:var(--transition);
+
+    color:var(--text-secondary);
+
 }
 
 .nav-links a:hover{
-    color:var(--gold);
+
+    color:var(--primary);
+
+}
+
+#mobile-menu{
+
+    display:none;
+
+    background:none;
+
+    color:white;
+
+    font-size:1.4rem;
+
+}
+
+/* ==========================================================
+                     HERO
+========================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    padding:130px 8%;
+
+    gap:80px;
+
+}
+
+.hero-left{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.badge{
+
+    width:max-content;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:var(--glass);
+
+    border:1px solid var(--glass-border);
+
+    color:var(--primary);
+
+}
+
+.hero h1{
+
+    font-size:5rem;
+
+    line-height:1.1;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.hero-buttons button{
+
+    padding:16px 30px;
+
+    border-radius:999px;
+
+    transition:var(--transition);
+
+}
+
+.hero-buttons button:first-child{
+
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color:black;
+
+    font-weight:700;
+
+}
+
+.hero-buttons button:last-child{
+
+    background:transparent;
+
+    color:white;
+
+    border:1px solid var(--glass-border);
+
+}
+
+/* ==========================================================
+                ARES STAGE
+========================================================== */
+
+#ares-stage{
+
+    width:100%;
+
+    height:700px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid var(--glass-border);
+
+    backdrop-filter:blur(20px);
+  
+}
+
+/* ==========================================================
+               SECTIONS
+========================================================== */
+
+section{
+
+    width:100%;
+
+}
+
+#chat-section,
+#features,
+#about,
+#contact{
+
+    padding:100px 8%;
+
+}
+
+/* ==========================================================
+                  FOOTER
+========================================================== */
+
+footer{
+
+    padding:50px;
+
+    text-align:center;
+
+    border-top:1px solid var(--border);
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================================================
+              RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+.hero{
+
+grid-template-columns:1fr;
+
+}
+
+.hero h1{
+
+font-size:3.5rem;
+
+}
+
+#ares-stage{
+
+height:500px;
+
+}
+
+.nav-links{
+
+display:none;
+
+}
+
+#mobile-menu{
+
+display:block;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.hero-buttons button{
+
+width:100%;
+
+}
+
+}
+
+/* ==========================================================
+                    PREMIUM EFFECTS
+========================================================== */
+
+/* ===========================
+      Aurora Background
+=========================== */
+
+#aurora-layer{
+
+    background:
+        radial-gradient(circle at 20% 20%,
+        rgba(94,235,255,.12),
+        transparent 45%),
+
+        radial-gradient(circle at 80% 10%,
+        rgba(43,127,255,.12),
+        transparent 40%),
+
+        radial-gradient(circle at 50% 90%,
+        rgba(138,109,255,.10),
+        transparent 40%);
+
+    filter:blur(80px);
+
+    animation:
+    auroraMove 18s ease-in-out infinite;
+
+}
+
+/* ===========================
+       Digital Grid
+=========================== */
+
+#grid-layer{
+
+    background-image:
+
+        linear-gradient(
+        rgba(255,255,255,.02) 1px,
+        transparent 1px),
+
+        linear-gradient(
+        90deg,
+        rgba(255,255,255,.02) 1px,
+        transparent 1px);
+
+    background-size:60px 60px;
+
+    opacity:.5;
+
+}
+
+/* ===========================
+        Noise Layer
+=========================== */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+background-image:
+
+radial-gradient(
+rgba(255,255,255,.015) 1px,
+transparent 1px);
+
+background-size:4px 4px;
+
+opacity:.35;
+
+z-index:-50;
+
+}
+
+/* ===========================
+      Glass Cards
+=========================== */
+
+.glass{
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.10);
+
+backdrop-filter:blur(25px);
+
+-webkit-backdrop-filter:blur(25px);
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+     Glow Utilities
+=========================== */
+
+.glow-blue{
+
+box-shadow:
+
+0 0 20px rgba(94,235,255,.25),
+
+0 0 60px rgba(43,127,255,.15);
+
+}
+
+.text-glow{
+
+text-shadow:
+
+0 0 10px rgba(94,235,255,.25),
+
+0 0 25px rgba(94,235,255,.15);
+
+}
+
+/* ===========================
+      Hero Heading
+=========================== */
+
+.hero h1{
+
+background:
+
+linear-gradient(
+90deg,
+
+#ffffff,
+
+#b9eaff,
+
+#5eebff);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+/* ===========================
+      Hero Paragraph
+=========================== */
+
+.hero p{
+
+max-width:650px;
+
+font-size:1.08rem;
+
+}
+
+/* ===========================
+      Stage Styling
+=========================== */
+
+#ares-stage{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+/* Hologram Placeholder */
+
+#ares-stage::before{
+
+content:"ARES";
+
+position:absolute;
+
+top:50%;
+
+left:50%;
+
+transform:
+
+translate(-50%,-50%);
+
+font-family:"Cinzel",serif;
+
+font-size:3rem;
+
+letter-spacing:10px;
+
+color:rgba(94,235,255,.12);
+
+}
+
+/* ===========================
+       Button Hover
+=========================== */
+
+.hero-buttons button{
+
+transition:
+
+.35s ease;
+
+}
+
+.hero-buttons button:hover{
+
+transform:
+
+translateY(-4px);
+
+}
+
+.hero-buttons button:first-child:hover{
+
+box-shadow:
+
+0 0 25px rgba(94,235,255,.35);
+
+}
+
+.hero-buttons button:last-child:hover{
+
+background:
+
+rgba(255,255,255,.06);
+
+}
+
+/* ===========================
+      Navbar Hover Line
+=========================== */
+
+.nav-links a{
+
+position:relative;
+
 }
 
 .nav-links a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0%;
-    height:2px;
-    background:var(--gold);
-    transition:.25s ease;
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:-6px;
+
+width:0;
+
+height:2px;
+
+background:
+
+var(--primary);
+
+transition:.3s;
+
 }
 
 .nav-links a:hover::after{
-    width:100%;
+
+width:100%;
+
 }
 
+/* ===========================
+      Animations
+=========================== */
 
-    /*==========================================================
-                            HERO
-    ==========================================================*/
+@keyframes auroraMove{
 
+0%{
 
+transform:
 
-    /*==========================================================
-                        ARES CHARACTER
-    ==========================================================*/
+translateX(-10%)
+translateY(-5%)
 
+scale(1);
 
+}
 
-    /*==========================================================
-                            TRENDING
-    ==========================================================*/
+50%{
 
+transform:
 
+translateX(8%)
+translateY(5%)
 
-    /*==========================================================
-                    MOVIE RECOMMENDATIONS
-    ==========================================================*/
+scale(1.15);
 
+}
 
+100%{
 
-    /*==========================================================
-                        MOVIE CARDS
-    ==========================================================*/
+transform:
 
+translateX(-10%)
+translateY(-5%)
 
+scale(1);
 
-    /*==========================================================
-                            FOOTER
-    ==========================================================*/
+}
 
+}
 
+/* ===========================
+      Smooth Fade
+=========================== */
 
-    /*==========================================================
-                            UTILITIES
-    ==========================================================*/
-/*==========================================================
-                        UTILITIES
-==========================================================*/
+.fade-up{
+
+opacity:0;
+
+transform:
+
+translateY(40px);
+
+}
+
+/* ==========================================================
+                    PART 1.4
+              PREMIUM ANIMATIONS
+========================================================== */
+
+/* ==========================================================
+                    FLOATING PARTICLES
+========================================================== */
+
+.particle{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:rgba(94,235,255,.8);
+
+    box-shadow:
+        0 0 10px rgba(94,235,255,.6),
+        0 0 20px rgba(94,235,255,.3);
+
+    animation:
+        particleFloat linear infinite;
+
+}
+
+@keyframes particleFloat{
+
+    0%{
+
+        transform:
+            translateY(120vh)
+            scale(.4);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:1;
+
+    }
+
+    90%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+            translateY(-20vh)
+            scale(1.4);
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================================================
+                    PAGE TRANSITION
+========================================================== */
+
+.hero-left,
+.hero-right,
+footer{
+
+    animation:
+
+        fadeInUp
+        1.2s
+        ease
+        forwards;
+
+}
+
+.hero-right{
+
+    animation-delay:.3s;
+
+}
+
+@keyframes fadeInUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+                    BUTTON RIPPLE
+========================================================== */
+
+.hero-buttons button{
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.hero-buttons button::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:0;
+
+    height:0;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.2);
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    transition:
+        .6s;
+
+}
+
+.hero-buttons button:hover::before{
+
+    width:350px;
+
+    height:350px;
+
+}
+
+/* ==========================================================
+                    STAGE GLOW
+========================================================== */
+
+#ares-stage{
+
+    box-shadow:
+
+        inset
+        0 0 60px
+        rgba(94,235,255,.05),
+
+        0 0 40px
+        rgba(43,127,255,.15);
+
+}
+
+#ares-stage::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        linear-gradient(
+
+            transparent,
+
+            rgba(94,235,255,.05),
+
+            transparent
+
+        );
+
+    animation:
+
+        scanner
+
+        4s
+
+        linear
+
+        infinite;
+
+}
+
+/* ==========================================================
+                    SCANNER
+========================================================== */
+
+@keyframes scanner{
+
+    from{
+
+        transform:
+            translateY(-100%);
+
+    }
+
+    to{
+
+        transform:
+            translateY(120%);
+
+    }
+
+}
+
+/* ==========================================================
+                LOADING LOGO
+========================================================== */
+
+.loading-logo h1{
+
+    animation:
+
+        logoPulse
+
+        2.5s
+
+        infinite;
+
+}
+
+@keyframes logoPulse{
+
+    0%{
+
+        opacity:.6;
+
+        transform:scale(.98);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+        text-shadow:
+
+            0 0 20px
+            rgba(94,235,255,.5);
+
+    }
+
+    100%{
+
+        opacity:.6;
+
+        transform:scale(.98);
+
+    }
+
+}
+
+/* ==========================================================
+                    LOADING BAR
+========================================================== */
+
+.loading-progress{
+
+    animation:
+
+        loading
+
+        4s
+
+        linear
+
+        infinite;
+
+}
+
+@keyframes loading{
+
+    0%{
+
+        width:0;
+
+    }
+
+    100%{
+
+        width:100%;
+
+    }
+
+}
+
+/* ==========================================================
+                HERO BADGE
+========================================================== */
+
+.badge{
+
+    animation:
+
+        badgeGlow
+
+        3s
+
+        ease-in-out
+
+        infinite;
+
+}
+
+@keyframes badgeGlow{
+
+    0%{
+
+        box-shadow:
+
+            0 0 0
+
+            rgba(94,235,255,.2);
+
+    }
+
+    50%{
+
+        box-shadow:
+
+            0 0 25px
+
+            rgba(94,235,255,.35);
+
+    }
+
+    100%{
+
+        box-shadow:
+
+            0 0 0
+
+            rgba(94,235,255,.2);
+
+    }
+
+}
+
+/* ==========================================================
+                SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#05070E;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:
+
+        linear-gradient(
+
+            var(--primary),
+
+            var(--secondary)
+
+        );
+
+    border-radius:50px;
+
+}
+
+/* ==========================================================
+                    SELECTION
+========================================================== */
+
+::selection{
+
+    background:var(--primary);
+
+    color:black;
+
+}
+      
+/* ==========================================================
+                    PART 1.6
+             LAYOUT & UTILITY SYSTEM
+========================================================== */
+
+/* ==========================================================
+                    CONTAINER
+========================================================== */
 
 .container{
 
-    width:min(90%, var(--container));
+    width:min(1400px,92%);
 
-    margin-inline:auto;
+    margin:auto;
 
 }
+
+/* ==========================================================
+                    SECTION SPACING
+========================================================== */
 
 .section{
 
-    padding:100px 0;
+    padding:140px 0;
+
+    position:relative;
 
 }
+
+.section-title{
+
+    font-size:3.5rem;
+
+    margin-bottom:18px;
+
+}
+
+.section-subtitle{
+
+    color:var(--text-secondary);
+
+    max-width:720px;
+
+    line-height:1.8;
+
+}
+
+/* ==========================================================
+                  FLEX UTILITIES
+========================================================== */
+
+.flex{
+
+    display:flex;
+
+}
+
+.flex-center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.flex-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.flex-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* ==========================================================
+                    GRID UTILITIES
+========================================================== */
+
+.grid{
+
+    display:grid;
+
+}
+
+.grid-2{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:50px;
+
+}
+
+.grid-3{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:35px;
+
+}
+
+/* ==========================================================
+                    CARD SYSTEM
+========================================================== */
+
+.card{
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:26px;
+
+    padding:35px;
+
+    backdrop-filter:blur(25px);
+
+    transition:.4s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(94,235,255,.25);
+
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.35),
+
+        0 0 30px rgba(94,235,255,.12);
+
+}
+
+/* ==========================================================
+                 BADGE VARIANTS
+========================================================== */
+
+.badge-outline{
+
+    border:1px solid rgba(94,235,255,.4);
+
+    color:var(--primary);
+
+    background:transparent;
+
+}
+
+.badge-solid{
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        var(--secondary)
+
+    );
+
+    color:black;
+
+}
+
+/* ==========================================================
+                    TEXT HELPERS
+========================================================== */
 
 .text-center{
 
@@ -477,153 +1524,611 @@ nav{
 
 }
 
+.text-primary{
 
-    /*==========================================================
-                            RESPONSIVE
-    ==========================================================*/
+    color:var(--primary);
 
+}
 
+.text-muted{
 
+    color:var(--text-secondary);
+
+}
+
+.uppercase{
+
+    text-transform:uppercase;
+
+}
+
+.bold{
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+                   SPACING HELPERS
+========================================================== */
+
+.mt-1{margin-top:10px;}
+.mt-2{margin-top:20px;}
+.mt-3{margin-top:30px;}
+.mt-4{margin-top:40px;}
+.mt-5{margin-top:50px;}
+
+.mb-1{margin-bottom:10px;}
+.mb-2{margin-bottom:20px;}
+.mb-3{margin-bottom:30px;}
+.mb-4{margin-bottom:40px;}
+.mb-5{margin-bottom:50px;}
+
+/* ==========================================================
+                    IMAGE STYLE
+========================================================== */
+
+.image-cover{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:20px;
+
+    object-fit:cover;
+
+}
+
+/* ==========================================================
+                  RESPONSIVE GRID
+========================================================== */
+
+@media(max-width:992px){
+
+.grid-2{
+
+grid-template-columns:1fr;
+
+}
+
+.grid-3{
+
+grid-template-columns:1fr;
+
+}
+
+.section{
+
+padding:90px 0;
+
+}
+
+.section-title{
+
+font-size:2.6rem;
+
+}
+
+}
+      
     </style>
 
 </head>
 
 <body>
 
-<!--==========================================================
-                        HTML
-===========================================================-->
-<header>
+<!-- ==========================================================
+                    LOADING SCREEN
+========================================================== -->
 
-    <nav>
+<div id="loading-screen">
 
-        <a href="#" class="logo">
+    <div class="loading-logo">
 
-            ARES
+        <h1>ARES</h1>
 
-        </a>
+        <p>The Future Speaks.</p>
 
-        <div class="nav-links">
+    </div>
 
-            <a href="#">Home</a>
+    <div class="loading-bar">
 
-            <a href="#trending">Trending</a>
-
-            <a href="#recommendations">Recommendations</a>
-
-            <a href="#chat">Chat</a>
+        <div class="loading-progress">
 
         </div>
 
-    </nav>
+    </div>
+
+</div>
+
+<!-- ==========================================================
+                    BACKGROUND
+========================================================== -->
+
+<div id="background">
+
+    <div id="particles-layer"></div>
+
+    <div id="aurora-layer"></div>
+
+    <div id="grid-layer"></div>
+
+</div>
+
+<!-- ==========================================================
+                      NAVBAR
+========================================================== -->
+
+<header>
+
+<nav id="navbar">
+
+<div class="logo">
+
+ARES
+
+</div>
+
+<ul class="nav-links">
+
+<li>
+<a href="#home">
+Home
+</a>
+</li>
+
+<li>
+<a href="#features">
+Features
+</a>
+</li>
+
+<li>
+<a href="#about">
+About
+</a>
+</li>
+
+<li>
+<a href="#contact">
+Contact
+</a>
+</li>
+
+</ul>
+
+<button id="mobile-menu">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+</nav>
 
 </header>
 
-<!--==========================================================
-                    NAVIGATION
-===========================================================-->
+<!-- ==========================================================
+                     HERO
+========================================================== -->
 
+<section
+id="home"
+class="hero">
 
+<div class="hero-left">
 
-<!--==========================================================
-                        HERO
-===========================================================-->
+<span class="badge">
 
+MetaBeing
 
+</span>
 
-<!--==========================================================
-                    ARES CHARACTER
-===========================================================-->
+<h1>
 
+The Future
+Speaks.
 
+</h1>
 
-<!--==========================================================
-                        TRENDING
-===========================================================-->
+<p>
 
+Hello.
+I'm ARES.
 
+A MetaBeing built to think,
+create and evolve.
 
-<!--==========================================================
-                MOVIE RECOMMENDATIONS
-===========================================================-->
+</p>
 
+<div class="hero-buttons">
 
+<button>
 
-<!--==========================================================
-                        FOOTER
-===========================================================-->
+Start Conversation
 
+</button>
 
+<button>
+
+Learn More
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ======================================================
+                  ARES AREA
+====================================================== -->
+
+<div class="hero-right">
+
+<div id="ares-stage">
+
+<!--
+
+PART 3
+
+ThreeJS Scene
+
+-->
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================================
+                   CHAT SECTION
+========================================================== -->
+
+<section
+id="chat-section">
+
+<div
+id="chat-container">
+
+<!--
+
+Professional AI Chat
+
+Part 6
+
+-->
+
+</div>
+
+</section>
+
+<!-- ==========================================================
+                  FEATURES
+========================================================== -->
+
+<section
+id="features">
+
+<!--
+
+Feature Cards
+
+Part 10
+
+-->
+
+</section>
+
+<!-- ==========================================================
+                    ABOUT
+========================================================== -->
+
+<section
+id="about">
+
+<!--
+
+About ARES
+
+-->
+
+</section>
+
+<!-- ==========================================================
+                   CONTACT
+========================================================== -->
+
+<section
+id="contact">
+
+<p>
+
+ares.metabeing@gmail.com
+
+</p>
+
+</section>
+
+<!-- ==========================================================
+                     FOOTER
+========================================================== -->
+
+<footer>
+
+<p>
+
+© 2026 ARES
+
+The Future Speaks.
+
+</p>
+
+</footer>
+
+<!-- ==========================================================
+              JAVASCRIPT STARTS
+              (Part 1.10)
+========================================================== -->
 
 <script>
+/* ==========================================================
+                    ARES v1.0.5
+                FOUNDATION JAVASCRIPT
+========================================================== */
 
-/*==========================================================
-                        JAVASCRIPT
-==========================================================*/
+document.addEventListener("DOMContentLoaded", () => {
 
+    initializeARES();
 
+});
 
-/*==========================================================
-                    CONFIGURATION
-==========================================================*/
-
-
-
-/*==========================================================
-                    GLOBAL VARIABLES
-==========================================================*/
-
-
-
-/*==========================================================
-                    DOM ELEMENTS
-==========================================================*/
-
-
-
-/*==========================================================
-                    NAVIGATION
-==========================================================*/
-
-
-
-/*==========================================================
-                    TRENDING
-==========================================================*/
-
-
-
-/*==========================================================
-            MOVIE RECOMMENDATIONS
-==========================================================*/
-
-
-
-/*==========================================================
-                    START CHAT
-==========================================================*/
-
-
-
-/*==========================================================
-                    CHATBOT
-==========================================================*/
-
-
-
-/*==========================================================
-                FUTURE AI FEATURES
-==========================================================*/
-
-
-
-/*==========================================================
+/* ==========================================================
                     INITIALIZATION
-==========================================================*/
+========================================================== */
 
+function initializeARES(){
 
+    initializeLoader();
 
+    initializeNavbar();
+
+    initializeHero();
+
+    createParticles(60);
+
+}
+
+/* ==========================================================
+                    LOADER
+========================================================== */
+
+function initializeLoader(){
+
+    const loader=document.getElementById("loading-screen");
+
+    setTimeout(()=>{
+
+        gsap.to(loader,{
+
+            opacity:0,
+
+            duration:1,
+
+            pointerEvents:"none",
+
+            onComplete(){
+
+                loader.style.display="none";
+
+            }
+
+        });
+
+    },3500);
+
+}
+
+/* ==========================================================
+                    HERO
+========================================================== */
+
+function initializeHero(){
+
+    gsap.from(".hero-left",{
+
+        y:70,
+
+        opacity:0,
+
+        duration:1.2,
+
+        ease:"power3.out"
+
+    });
+
+    gsap.from(".hero-right",{
+
+        x:80,
+
+        opacity:0,
+
+        duration:1.4,
+
+        delay:.3,
+
+        ease:"power3.out"
+
+    });
+
+}
+
+/* ==========================================================
+                    NAVBAR
+========================================================== */
+
+function initializeNavbar(){
+
+    const nav=document.getElementById("navbar");
+
+    window.addEventListener("scroll",()=>{
+
+        if(window.scrollY>50){
+
+            nav.style.background="rgba(5,7,14,.82)";
+
+            nav.style.backdropFilter="blur(30px)";
+
+        }
+
+        else{
+
+            nav.style.background="rgba(5,7,14,.55)";
+
+        }
+
+    });
+
+}
+
+/* ==========================================================
+                    PARTICLES
+========================================================== */
+
+function createParticles(total){
+
+    const container=document.getElementById("particles-layer");
+
+    for(let i=0;i<total;i++){
+
+        const particle=document.createElement("span");
+
+        particle.className="particle";
+
+        particle.style.left=Math.random()*100+"vw";
+
+        particle.style.animationDuration=
+        (8+Math.random()*12)+"s";
+
+        particle.style.animationDelay=
+        Math.random()*10+"s";
+
+        particle.style.opacity=Math.random();
+
+        container.appendChild(particle);
+
+    }
+
+}
+
+/* ==========================================================
+                    BUTTON EFFECT
+========================================================== */
+
+document.querySelectorAll(".hero-buttons button")
+
+.forEach(button=>{
+
+button.addEventListener("mouseenter",()=>{
+
+gsap.to(button,{
+
+scale:1.04,
+
+duration:.25
+
+});
+
+});
+
+button.addEventListener("mouseleave",()=>{
+
+gsap.to(button,{
+
+scale:1,
+
+duration:.25
+
+});
+
+});
+
+});
+
+/* ==========================================================
+                    FUTURE MODULES
+========================================================== */
+
+/*
+
+Part 2
+
+Aurora Engine
+
+*/
+
+/*
+
+Part 3
+
+ThreeJS Scene
+
+*/
+
+/*
+
+Part 4
+
+Cube Engine
+
+*/
+
+/*
+
+Part 5
+
+ARES MetaBeing
+
+*/
+
+/*
+
+Part 6
+
+AI Chat
+
+*/
+
+/*
+
+Part 7
+
+Voice System
+
+*/
+
+/*
+
+Part 8
+
+Behaviour Engine
+
+*/
+
+/* ==========================================================
+                    END
+========================================================== */
+
+console.log(
+
+"%cARES INITIALIZED",
+
+"color:#5EEBFF;font-size:18px;font-weight:bold;"
+
+);
+  
 </script>
 
 </body>
+
 </html>
